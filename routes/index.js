@@ -10,10 +10,9 @@ router.get('/get-info', function(req, res) {
 
     res.json(
          {
-            ipaddress: req.headers["host"],
+            ipaddress: req.header('x-forwarded-for') || req.connection.remoteAddress,
             language: language,
-            software: software,
-            headers: req.header('x-forwarded-for') || req.connection.remoteAddress
+            software: software
          }
      )
 });
