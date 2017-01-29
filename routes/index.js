@@ -12,7 +12,8 @@ router.get('/get-info', function(req, res) {
          {
             ipaddress: req.headers["host"],
             language: language,
-            software: software
+            software: software,
+            headers: req.header('x-forwarded-for') || req.connection.remoteAddress
          }
      )
 });
